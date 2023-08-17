@@ -34,16 +34,14 @@
 		<img
 			:src="store?.users?.[Object.keys(store?.users)[0]]?.photoURL"
 			class="logo"
-			alt="Vite logo"
+			alt="Аватар"
 		/>
 		<input type="file" class="input-avatar" @input="sendAvatar" />
 	</div>
 	{{ store }}
 	<button @click="btnLogin">btnLogin</button>
 	<button @click="signout">signout</button>
-	<button @click="writeUserData(Object.keys(store.users)[0], 'test')">
-		Создать
-	</button>
+	<button @click="writeUserData('test', { test: 'test' })">Создать</button>
 </template>
 
 <style scoped>
