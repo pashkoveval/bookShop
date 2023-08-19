@@ -48,11 +48,11 @@ const provider = new GoogleAuthProvider();
 const firebaseApp = getApp();
 const storage = getStorage(firebaseApp);
 
-const writeUserData = (uid: string, user: object) => {
+const writeUserData = (uid, user) => {
 	set(ref(db, '/users/' + uid), user);
 };
 
-const getURL = async (pathImg: string) => {
+const getURL = async (pathImg) => {
 	return await getDownloadURL(storageRef(storage, pathImg))
 		.then((url) => {
 			return url;
@@ -66,13 +66,17 @@ const getRefFunc = (pathImg = 'img') => {
 	return storageRef(storage, pathImg);
 };
 
-const uploadFyles = async (file: any) => {
+const uploadFyles = async (file) => {
 	if (file) {
 		const metadata = {
 			contentType: file.type,
 		};
 		const storageRefText = storageRef(storage, 'images/' + genId());
-		const uploadTask = await uploadBytesResumable(storageRefText, file, metadata);
+		const uploadTask = await uploadBytesResumable(
+			storageRefText,
+			file,
+			metadata
+		);
 		if (uploadTask) {
 			const url = await getDownloadURL(storageRefText).then((downloadURL) => {
 				return downloadURL;
@@ -91,7 +95,7 @@ onAuthStateChanged(auth, (user) => {
 			email: user.email,
 			displayName: user.displayName,
 			photoURL: user.photoURL,
-			localId: user?.reloadUserInfo?.localId,
+			// localId: user?.reloadUserInfo?.localId,
 		};
 		writeUserData(userData.uid, userData);
 		console.log('auth', user);
@@ -127,8 +131,6 @@ const btnLogin = async () => {
 			console.error({ errorCode, errorMessage, email, credential });
 		});
 };
-
-
 
 export {
 	getURL,

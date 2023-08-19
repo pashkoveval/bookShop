@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 	import { reactive } from 'vue';
 	import {
 		uploadFyles,
@@ -11,7 +11,7 @@
 	} from './fierbase/index.js';
 
 	const users = fbref(db, 'users/');
-	onValue(users, (snapshot: any) => {
+	onValue(users, (snapshot) => {
 		const data = snapshot.val();
 		console.log(data, 'data');
 		store.users = data;
