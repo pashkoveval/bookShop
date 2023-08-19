@@ -1,0 +1,119 @@
+/* Вспомогательные классы */
+
+@for $i from 0 through 100 {
+  .ma-#{$i} {
+    margin: $i + px !important;
+  }
+  .mx-#{$i} {
+    margin-right: $i + px !important;
+    margin-left: $i + px !important;
+  }
+  .my-#{$i} {
+    margin-top: $i + px !important;
+    margin-bottom: $i + px !important;
+  }
+  .mt-#{$i} {
+    margin-top: $i + px !important;
+  }
+  .mr-#{$i} {
+    margin-right: $i + px !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: $i + px !important;
+  }
+  .ml-#{$i} {
+    margin-left: $i + px !important;
+  }
+
+  .pa-#{$i} {
+    padding: $i + px !important;
+  }
+  .px-#{$i} {
+    padding-right: $i + px !important;
+    padding-left: $i + px !important;
+  }
+  .py-#{$i} {
+    padding-top: $i + px !important;
+    padding-bottom: $i + px !important;
+  }
+  .pt-#{$i} {
+    padding-top: $i + px !important;
+  }
+  .pr-#{$i} {
+    padding-right: $i + px !important;
+  }
+  .pb-#{$i} {
+    padding-bottom: $i + px !important;
+  }
+  .pl-#{$i} {
+    padding-left: $i + px !important;
+  }
+  .gap-#{$i} {
+    gap: $i + px !important;
+  }
+  .border_radius-#{$i} {
+    border-radius: $i + px !important;
+  }
+  .border_radius_p-#{$i} {
+    border-radius: $i + "%" !important;
+  }
+  .transition-#{$i} {
+    transition: $i + ms !important;
+  }
+}
+
+@for $i from 1 through 100 {
+  .width-#{$i} {
+    width: $i + "%";
+  }
+  .height-#{$i} {
+    height: $i + "%";
+  }
+  .font_size-#{$i} {
+    font-size: $i + px;
+  }
+}
+
+@for $i from 1 through 9 {
+  .font_weight-#{$i} {
+    font-weight: $i * 100;
+  }
+}
+
+.white {
+  color: $white;
+}
+.black {
+  color: $black;
+}
+.indigo {
+  color: $indigo;
+}
+.green {
+  color: $green;
+}
+.green_dark {
+  color: $green_dark;
+}
+.green_soft {
+  color: $green_soft;
+}
+.error {
+  color: $error;
+}
+.error_soft {
+  color: $error_soft;
+}
+.warn {
+  color: $warn;
+}
+.warn_soft {
+  color: $warn_soft;
+}
+
+.full_height {
+  height: 100%;
+}
+.full-widht {
+  width: 100%;
+}

@@ -1,47 +1,20 @@
 <script setup>
-	import { reactive } from 'vue';
-	import {
-		storageUploadFyles,
-		btnLogin,
-		signout,
-		writeUserData,
-		databaseRef,
-		database,
-		databaseOnValue,
-	} from './fierbase/main.js';
-
-	const users = databaseRef(database, 'users/');
-	databaseOnValue(users, (snapshot) => {
-		const data = snapshot.val();
-		console.log(data, 'data');
-		store.users = data;
-	});
-
-	const store = reactive({
-		users: null,
-	});
-
-	const sendAvatar = async (e) => {
-		if (e.target.files[0]) {
-			const res = await storageUploadFyles(e.target.files[0]);
-			console.log(res, 'res');
-		}
-	};
+	import { RouterView } from 'vue-router';
 </script>
 
 <template>
-	<div>
-		<img
-			:src="store?.users?.[Object.keys(store?.users)[0]]?.photoURL"
-			class="logo"
-			alt="Аватар"
-		/>
-		<input type="file" class="input-avatar" @input="sendAvatar" />
-	</div>
-	{{ store }}
-	<button @click="btnLogin">btnLogin</button>
-	<button @click="signout">signout</button>
-	<button @click="writeUserData('test', { test: 'test' })">Создать</button>
+	<RouterView v-slot="{ Component, route }">
+		<Transition
+			:name="route?.meta?.transitionName || 'fade-scale'"
+			mode="out-in"
+		>
+			<KeepAlive>
+				<main :key="route.name" class="main">
+					<component :is="Component" />
+				</main>
+			</KeepAlive>
+		</Transition>
+	</RouterView>
 </template>
 
 <style scoped>

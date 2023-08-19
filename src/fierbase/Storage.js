@@ -1,4 +1,4 @@
-import { v4 as genId } from 'uuid';
+import { v4 } from 'uuid';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { storage } from './index';
 
@@ -23,7 +23,7 @@ const storageUploadFyles = async (file) => {
 		const metadata = {
 			contentType: file.type,
 		};
-		const storageRefText = ref(storage, 'images/' + genId());
+		const storageRefText = ref(storage, 'images/' + v4());
 		const uploadTask = await uploadBytesResumable(
 			storageRefText,
 			file,

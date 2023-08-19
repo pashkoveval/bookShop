@@ -12,14 +12,14 @@ import { writeUserData } from './Database';
 onAuthStateChanged(auth, (user) => {
 	if (user) {
 		const userData = {
-			uid: user.uid,
+			localId: user.uid,
 			email: user.email,
 			displayName: user.displayName,
 			photoURL: user.photoURL,
-			localId: user?.reloadUserInfo?.localId,
 			online: true,
 		};
-		writeUserData(userData.uid, userData);
+
+		writeUserData(userData.localId, userData);
 		console.log('auth', user);
 		console.log('userData', userData);
 	} else {
