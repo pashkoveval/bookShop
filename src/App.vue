@@ -1,17 +1,17 @@
 <script setup>
 	import { reactive } from 'vue';
 	import {
-		uploadFyles,
+		storageUploadFyles,
 		btnLogin,
 		signout,
 		writeUserData,
-		fbref,
-		db,
-		onValue,
-	} from './fierbase/index.js';
+		databaseRef,
+		database,
+		databaseOnValue,
+	} from './fierbase/main.js';
 
-	const users = fbref(db, 'users/');
-	onValue(users, (snapshot) => {
+	const users = databaseRef(database, 'users/');
+	databaseOnValue(users, (snapshot) => {
 		const data = snapshot.val();
 		console.log(data, 'data');
 		store.users = data;
@@ -23,7 +23,7 @@
 
 	const sendAvatar = async (e) => {
 		if (e.target.files[0]) {
-			const res = await uploadFyles(e.target.files[0]);
+			const res = await storageUploadFyles(e.target.files[0]);
 			console.log(res, 'res');
 		}
 	};
